@@ -1,6 +1,6 @@
 TARGET := euler_001.elf
 
-SRC := main.c
+SRC := main_001.c
 
 CFLAGS := -pedantic -Wall -Wextra  
 CFLAGS += -Wno-coverage-mismatch  -Wdouble-promotion
