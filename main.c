@@ -1,45 +1,68 @@
-/* Copyright 2013 goodyoga all rights reserved. */
+/* Copyright 2013,2014 goodyoga all rights reserved. */
 
 #include <stdio.h>    /* printf */
 #include <stdlib.h>   /* atoi,exit   */
 #include <unistd.h>   /* getopt */
 
-//
-// @startuml "euler_001_multiples_of_3_and_5.png"
-// title euler_001_multiples_of_3_and_5
-// participant defaults
-// participant i
-// participant sum
-// 
-// note over defaults,sum: [multiples of 3 and 5] means [add if mul of 3 or mul of 5]
-// 
-// break h option
-// defaults->defaults: PRINT(usage)
-// defaults->defaults: exit(EXIT_SUCCESS)
-// end
-// defaults->defaults:below = 1000
-// opt b option
-// defaults->defaults: below = value by cmdline
-// end
-// 
-// defaults->i: i = 1
-// defaults->sum: sum = 0
-// loop i < below
-// alt multiples of 3 or 5
-// note left of sum: !(i % x) means (mod(i,x) == 0) 
-// i->sum: sum.add(i)
-// end alt
-// 
-// i->i: i++
-// end loop
-// 
-// sum->sum: PRINT(sum)
-// @enduml
-// 
-
 void usage(void);
 
-int main(int argc __attribute__((unused)), char **argv)
+/**
+ * @file
+ * @addtogroup EULER_001 Euler_001
+ * @{
+ */
+
+/**
+ * @brief main function of Project Euler 001.
+ * @param argc number of args as usual.
+ * @param argv { -h: help | -b=\<number\>: below, default is 1000 }
+ * @return always return EXIT_SUCCESS.
+ * 
+ * following is a sequence of Euler 001.
+ * 
+ * @startuml{euler_001_multiples_of_3_and_5_seq.png}
+ * title euler_001_multiples_of_3_and_5
+ * participant defaults
+ * participant i
+ * participant sum
+ * 
+ * note over defaults,sum: [multiples of 3 and 5] means [add if mul of 3 or mul of 5]
+ * 
+ * break h option
+ * defaults->defaults: PRINT(usage)
+ * defaults->defaults: exit(EXIT_SUCCESS)
+ * end
+ * defaults->defaults:below = 1000
+ * opt b option
+ * defaults->defaults: below = value by the command line
+ * end
+ * 
+ * defaults->i: i = 1
+ * defaults->sum: sum = 0
+ * loop i < below
+ * alt multiples of 3 or 5
+ * note left of sum: !(i % x) means (mod(i,x) == 0) 
+ * i->sum: sum.add(i)
+ * end alt
+ * 
+ * i->i: i++
+ * end loop
+ * 
+ * sum->sum: PRINT(sum)
+ * @enduml
+ * 
+ * following is a component chart.
+ * 
+ * @startuml{euler_001_multiples_of_3_and_5_cmp.png}
+ * [default] - set
+ * set --> [i]   : 1
+ * set --> [sum] : 0
+ * [i]->[i] : looping
+ * [i] -->add : if [multiple of 3 or 5]
+ * [sum] -l- add
+ * @enduml
+ */ 
+int main(int argc, char **argv)
 {
     int i;
     int sum;
@@ -67,7 +90,9 @@ int main(int argc __attribute__((unused)), char **argv)
     return EXIT_SUCCESS;
 }
 
-
+/**
+ * @brief usage() prints help messages to show usage.
+ */
 void usage(void)
 {
     printf("    http://projecteuler.net/problem=1\n");
@@ -80,3 +105,7 @@ void usage(void)
            "    -b <number>: solve this between 1 and below <number>\n");
     return;
 }
+
+/**
+ * @}
+ */
