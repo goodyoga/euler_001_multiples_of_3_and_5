@@ -8,12 +8,13 @@ void usage(void);
 
 /**
  * @file
- * @addtogroup EULER_001 Euler_001
+ * @addtogroup  EULER_001  Euler_001_multiples_of_3_and_5
  * @{
  */
 
 /**
  * @brief main function of Project Euler 001.
+ * 
  * @param argc number of args as usual.
  * @param argv { -h: help | -b=\<number\>: below, default is 1000 }
  * @return always return EXIT_SUCCESS.
@@ -22,6 +23,7 @@ void usage(void);
  * 
  * @startuml{euler_001_multiples_of_3_and_5_seq.png}
  * title euler_001_multiples_of_3_and_5
+ * 
  * participant defaults
  * participant i
  * participant sum
@@ -51,15 +53,23 @@ void usage(void);
  * sum->sum: PRINT(sum)
  * @enduml
  * 
+ * 
  * following is a component chart.
  * 
  * @startuml{euler_001_multiples_of_3_and_5_cmp.png}
- * [default] - set
- * set --> [i]   : 1
- * set --> [sum] : 0
- * [i]->[i] : looping
- * [i] -->add : if [multiple of 3 or 5]
- * [sum] -l- add
+ * title euler_001_multiples_of_3_and_5_cmp.png
+ * 
+ * [defaults]
+ * i.set   -- [i] 
+ * sum.set --  [sum]
+ * sum.add --  [sum]
+ * 
+ * [defaults] ----> sum.set  : 0
+ * [defaults]   --> i.set  : 1
+ * 
+ * [i] <-  [i] : i++ [if (i < below)]
+ * [i] --> sum.add : [if multiple of 3 or 5]
+ * 
  * @enduml
  */ 
 int main(int argc, char **argv)
@@ -89,6 +99,9 @@ int main(int argc, char **argv)
     }
     return EXIT_SUCCESS;
 }
+/**
+ * @}
+ */
 
 /**
  * @brief usage() prints help messages to show usage.
@@ -106,6 +119,3 @@ void usage(void)
     return;
 }
 
-/**
- * @}
- */
