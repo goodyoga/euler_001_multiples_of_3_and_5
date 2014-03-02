@@ -4,10 +4,9 @@
 #include <stdlib.h>   /* atoi,exit   */
 #include <unistd.h>   /* getopt */
 
-void usage(void);
 
 /**
- * @file
+ * @file main_001.c
  * @addtogroup  EULER_001  Euler_001_multiples_of_3_and_5
  * @{
  */
@@ -72,6 +71,29 @@ void usage(void);
  * 
  * @enduml
  */ 
+int main(int argc, char **argv);
+
+
+
+
+/**
+ * @brief usage() prints help messages to show usage.
+ */
+void usage(void);
+
+/**
+ * @}
+ */
+
+
+
+
+/***********************************
+ * Implementation
+ ***********************************/
+
+
+
 int main(int argc, char **argv)
 {
     int i;
@@ -99,13 +121,7 @@ int main(int argc, char **argv)
     }
     return EXIT_SUCCESS;
 }
-/**
- * @}
- */
 
-/**
- * @brief usage() prints help messages to show usage.
- */
 void usage(void)
 {
     printf("    http://projecteuler.net/problem=1\n");
